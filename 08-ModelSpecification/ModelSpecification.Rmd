@@ -126,7 +126,7 @@ In March 2020, the number of COVID cases were increasing by 27.28% each day give
 
 # Orange Juice Demand
 
-The following data is from a Chicago-area chain called Dominick's. This data was collected in the 1990s and the data include weekly prices and sales (in number of cartons "moved") for 3 orange juice brands --- Tropicana, Minute Maid, Dominick's --- at 83 Chicagoland Stores, as well as an indicator, `feat`, showing whether each brand was advertised (in store or flyer) that week.
+The following data is from a Chicago-area chain called Dominick's. This data was collected in the 1990s and the data include weekly prices and sales (in number of cartons "moved") for 3 orange juice bxfrrands --- Tropicana, Minute Maid, Dominick's --- at 83 Chicagoland Stores, as well as an indicator, `feat`, showing whether each brand was advertised (in store or flyer) that week.
 
 ```{r}
 oj <- read.csv("../Data/oj.csv") 

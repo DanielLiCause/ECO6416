@@ -1,0 +1,963 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{anyfontsize}
+\usepackage{multirow}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Summary: Tractor Example},
+  pdfauthor={ECO 6416},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Summary: Tractor Example}
+\author{ECO 6416}
+\date{2024-12-07}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+Here are all the packages needed to get started.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl) }\CommentTok{\# reading in excel file}
+\FunctionTok{library}\NormalTok{(car) }\CommentTok{\# for vif function}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plotly) }\CommentTok{\# for interactive visualizations}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'plotly'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     last_plot
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:graphics':
+## 
+##     layout
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gt) }\CommentTok{\# for better looking tables}
+\FunctionTok{library}\NormalTok{(gtsummary) }\CommentTok{\# for better summary statistics}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Tractor Data Description}\label{tractor-data-description}
+
+The following data is of tractor sales and the characteristics of each
+tractor sold. It consists of 276 observations and 12 variables (4
+quantitative and 8 categorical).
+
+\begin{itemize}
+\tightlist
+\item
+  saleprice: The selling price of the tractor (in dollars)
+\item
+  horsepower: Horsepower of the engine
+\item
+  age: Age of the tractor sold
+\item
+  enginehours: Total running hours on the engine
+\item
+  diesel: Dummy varaible indicating whether or not the fuel used is
+  diesel
+\item
+  fwd: Dummy variable indicating whether or not the tractor is forward
+  or rear wheel drive
+\item
+  manual: Dummy variable indicating whether or not it is manual
+  transmission or automatic
+\item
+  johndeere: Dummy variable indicating if the manufacter is John Deere
+\item
+  cab: Dummy variable indicating if there is a saftey cab
+\item
+  seasons: Indicator for spring, summer, winter with the default being
+  fall
+\end{itemize}
+
+We can pull in the data and look at the data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tractor }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"../Data/TractorRaw.xlsx"}\NormalTok{)}
+
+\FunctionTok{gt}\NormalTok{(}\FunctionTok{head}\NormalTok{(tractor)) }\CommentTok{\# the gt function only makes it look nicer}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{longtable}{rrrrrrrrrrrr}
+\toprule
+saleprice & horsepower & age & enghours & diesel & fwd & manual & johndeere & cab & spring & summer & winter \\ 
+\midrule\addlinespace[2.5pt]
+16100 & 105 & 23 & 1800 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 \\ 
+10000 & 75 & 12 & 3730 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\ 
+25100 & 90 & 6 & 1757 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 \\ 
+15100 & 47 & 8 & 2500 & 1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 \\ 
+25100 & 95 & 5 & 2360 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 \\ 
+10250 & 46 & 17 & 1021 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 \\ 
+\bottomrule
+\end{longtable}
+\endgroup
+
+\section{Bad Practice}\label{bad-practice}
+
+If we ignore all our training, we may just run a model without
+considering the center, shape, and spread of all the variables.
+
+By simply running the model, we are also skipping the first step in
+regression analysis \emph{reviewing literature and develop a theoretical
+model.} This ignores the possibility that there may be non-linear
+relationships between the independent and dependent variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bad\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(saleprice }\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data =}\NormalTok{ tractor)}
+
+\FunctionTok{summary}\NormalTok{(bad\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = saleprice ~ ., data = tractor)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -48532  -6089   -645   6263  92806 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 13015.7894  4468.2593   2.913  0.00389 ** 
+## horsepower    226.5840    15.1670  14.939  < 2e-16 ***
+## age          -699.7279   146.8462  -4.765 3.12e-06 ***
+## enghours       -1.9344     0.3934  -4.917 1.55e-06 ***
+## diesel        444.3901  4000.6502   0.111  0.91164    
+## fwd          1491.0701  2413.9374   0.618  0.53731    
+## manual      -4214.1008  2550.8076  -1.652  0.09971 .  
+## johndeere   13709.8757  2972.6862   4.612 6.22e-06 ***
+## cab          8072.0643  2597.6376   3.107  0.00209 ** 
+## spring      -1815.2076  2672.9042  -0.679  0.49766    
+## summer      -4923.8739  2620.8553  -1.879  0.06138 .  
+## winter      -1579.6222  2933.8039  -0.538  0.59074    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16380 on 264 degrees of freedom
+## Multiple R-squared:  0.6599, Adjusted R-squared:  0.6457 
+## F-statistic: 46.57 on 11 and 264 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or (fancy output)}
+
+\FunctionTok{tbl\_regression}\NormalTok{(bad\_model,}
+               \AttributeTok{estimate\_fun =}  \SpecialCharTok{\textasciitilde{}}\FunctionTok{style\_sigfig}\NormalTok{(.x, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  gt}\SpecialCharTok{::}\FunctionTok{tab\_source\_note}\NormalTok{(gt}\SpecialCharTok{::}\FunctionTok{md}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Adjusted R{-}Squared: "}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(bad\_model)}\SpecialCharTok{$}\NormalTok{adj.r.squared}\SpecialCharTok{*} \DecValTok{100}\NormalTok{,}\AttributeTok{digits =} \DecValTok{2}\NormalTok{),}\StringTok{"\%"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lccc}
+\toprule
+\textbf{Characteristic} & \textbf{Beta} & \textbf{95\% CI}\textsuperscript{\textit{1}} & \textbf{p-value} \\ 
+\midrule\addlinespace[2.5pt]
+horsepower & 226.6 & 196.7, 256.4 & <0.001 \\ 
+age & -699.7 & -988.9, -410.6 & <0.001 \\ 
+enghours & -1.934 & -2.709, -1.160 & <0.001 \\ 
+diesel & 444.4 & -7,433, 8,322 & >0.9 \\ 
+fwd & 1,491 & -3,262, 6,244 & 0.5 \\ 
+manual & -4,214 & -9,237, 808.4 & 0.10 \\ 
+johndeere & 13,710 & 7,857, 19,563 & <0.001 \\ 
+cab & 8,072 & 2,957, 13,187 & 0.002 \\ 
+spring & -1,815 & -7,078, 3,448 & 0.5 \\ 
+summer & -4,924 & -10,084, 236.6 & 0.061 \\ 
+winter & -1,580 & -7,356, 4,197 & 0.6 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}CI = Confidence Interval\\
+Adjusted R-Squared: 64.57\%\\
+\end{minipage}
+\endgroup
+
+One thing to note here. Our model states that John Deere tractors cost
+\$13,710 more than the same tractor with a different name. To be
+thorough, I decided to check online for some tractors with similar
+characteristics. The true gap between brands was much smaller.
+
+\subsection{Assumption Testing}\label{assumption-testing}
+
+When we ignore the proper steps, we saw how our model is over-valuing
+John Deere tractors. We know this is the case because we mis-specified
+the model. The plots below also show that some of the Gauss-Markov
+assumptions have been violated.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(bad\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tractor_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+In this example, the first plot titled ``Residuals vs.~Fitted,'' you
+should not see a true pattern. In this case, since there is a non-linear
+relationship, you've already violated a classical assumption.
+
+The second plot titled ``Normal Q-Q'' shows the assumption of a normally
+distributed dependent variable for a fixed set of predictors. If this
+were a 45-degree line upwards, we could verify this. Unfortunately we do
+not have it in this case.
+
+The third plot titled ``Scale-Location'' checks for homoskedasticity. If
+this assumption were not violated, you'd see random points around a
+horizontal line. In this case, it is upwards sloping, so you can see
+there is a ``fanning out'' effect.
+
+The last plot ``Residuals vs.~Leverage'' keeps an eye out for regression
+outliers, influential observations, and high leverage points. (Do not
+worry about this last plot).
+
+\section{The Proper Practice}\label{the-proper-practice}
+
+If you were doing this on your own and didn't have a dataset, you would
+need to think about what variables could explain the variation in
+tractor prices. Since the data was already collected for you, you need
+to think about the relationships between the dependent varaible and the
+independent variables a.k.a \emph{reviewing literature and develop a
+theoretical model.}
+
+\subsection{Potential Ideas}\label{potential-ideas}
+
+Here are some thoughts that you may consider when looking at the
+relationships between independent and dependent variables.
+
+\begin{itemize}
+\tightlist
+\item
+  Quadratic relationship between horsepower and sales price
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Horsepower improves performance up to a limit, then extra power does
+    not add value, only consumes more fuel.
+  \end{itemize}
+\item
+  Logarithmic relationship between horsepower and sales price
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Horsepower improves performance more in the lower horsepower range
+    than in the higher horsepower range. There are still some benefits,
+    but not nearly as much.
+  \end{itemize}
+\end{itemize}
+
+You are not bound to only create variables, you can drop ones as well
+such as seasonality.
+
+You could continue this with all the variables to test out different
+relationships. For this example, now that we've created two different
+models, we can start building.
+
+\subsection{Splitting the Data}\label{splitting-the-data}
+
+First we need to split the data into testing and training data. Let's
+pull 10 observations
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123457}\NormalTok{)}
+\NormalTok{index }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{seq\_len}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(tractor)), }\AttributeTok{size =} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{train }\OtherTok{\textless{}{-}}\NormalTok{ tractor[}\SpecialCharTok{{-}}\NormalTok{index,]}
+\NormalTok{test }\OtherTok{\textless{}{-}}\NormalTok{ tractor[index,]}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Summary Statistics}\label{summary-statistics}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    saleprice        horsepower          age           enghours      
+##  Min.   :  1500   Min.   : 16.00   Min.   : 2.00   Min.   :    1.0  
+##  1st Qu.:  7562   1st Qu.: 47.25   1st Qu.: 7.00   1st Qu.:  763.8  
+##  Median : 11550   Median : 80.00   Median :14.50   Median : 2398.0  
+##  Mean   : 20521   Mean   :100.03   Mean   :15.89   Mean   : 3538.6  
+##  3rd Qu.: 20550   3rd Qu.:108.00   3rd Qu.:24.00   3rd Qu.: 5429.2  
+##  Max.   :200000   Max.   :535.00   Max.   :33.00   Max.   :18744.0  
+##      diesel           fwd             manual        johndeere     
+##  Min.   :0.000   Min.   :0.0000   Min.   :0.000   Min.   :0.0000  
+##  1st Qu.:1.000   1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:0.0000  
+##  Median :1.000   Median :1.0000   Median :1.000   Median :0.0000  
+##  Mean   :0.906   Mean   :0.5677   Mean   :0.703   Mean   :0.1391  
+##  3rd Qu.:1.000   3rd Qu.:1.0000   3rd Qu.:1.000   3rd Qu.:0.0000  
+##  Max.   :1.000   Max.   :1.0000   Max.   :1.000   Max.   :1.0000  
+##       cab             spring           summer           winter      
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
+##  Median :1.0000   Median :0.0000   Median :0.0000   Median :0.0000  
+##  Mean   :0.5338   Mean   :0.2218   Mean   :0.2331   Mean   :0.1692  
+##  3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.0000  
+##  Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or }
+
+\NormalTok{train }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{tbl\_summary}\NormalTok{(}\AttributeTok{statistic =} \FunctionTok{list}\NormalTok{(}\FunctionTok{all\_continuous}\NormalTok{() }\SpecialCharTok{\textasciitilde{}} \FunctionTok{c}\NormalTok{(}\StringTok{"\{mean\} (\{sd\})"}\NormalTok{,}
+                                                    \StringTok{"\{median\} (\{p25\}, \{p75\})"}\NormalTok{,}
+                                                    \StringTok{"\{min\}, \{max\}"}\NormalTok{),}
+                              \FunctionTok{all\_categorical}\NormalTok{() }\SpecialCharTok{\textasciitilde{}} \StringTok{"\{n\} / \{N\} (\{p\}\%)"}\NormalTok{),}
+              \AttributeTok{type =} \FunctionTok{all\_continuous}\NormalTok{() }\SpecialCharTok{\textasciitilde{}} \StringTok{"continuous2"}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lc}
+\toprule
+\textbf{Characteristic} & \textbf{N = 266}\textsuperscript{\textit{1}} \\ 
+\midrule\addlinespace[2.5pt]
+saleprice &  \\ 
+    Mean (SD) & 20,521 (27,480) \\ 
+    Median (Q1, Q3) & 11,550 (7,550, 20,700) \\ 
+    Min, Max & 1,500, 200,000 \\ 
+horsepower &  \\ 
+    Mean (SD) & 100 (84) \\ 
+    Median (Q1, Q3) & 80 (47, 108) \\ 
+    Min, Max & 16, 535 \\ 
+age &  \\ 
+    Mean (SD) & 16 (10) \\ 
+    Median (Q1, Q3) & 15 (7, 24) \\ 
+    Min, Max & 2, 33 \\ 
+enghours &  \\ 
+    Mean (SD) & 3,539 (3,415) \\ 
+    Median (Q1, Q3) & 2,398 (757, 5,439) \\ 
+    Min, Max & 1, 18,744 \\ 
+diesel & 241 / 266 (91\%) \\ 
+fwd & 151 / 266 (57\%) \\ 
+manual & 187 / 266 (70\%) \\ 
+johndeere & 37 / 266 (14\%) \\ 
+cab & 142 / 266 (53\%) \\ 
+spring & 59 / 266 (22\%) \\ 
+summer & 62 / 266 (23\%) \\ 
+winter & 45 / 266 (17\%) \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}n / N (\%)\\
+\end{minipage}
+\endgroup
+
+One thing that is obvious here is that our dependent variable is skewed
+to the right. The mean is about 9 thousand dollars higher than the
+median and the standard deviation is high, and the range is from 1.5k to
+200k. We may have outliers in our data.
+
+\subsection{Plots}\label{plots}
+
+Since we can only look at the quantitative variables in a scatter-plot
+and histogram, we are going to exclude the others.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplotMatrix}\NormalTok{(train[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tractor_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+From here you can see some non-linear relationships and non-normally
+distributed variables.
+
+\subsection{Data Transformation}\label{data-transformation}
+
+Let's take the natural logarithm of sales. Taking logs will bring
+outliers closer to the other tractor prices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{hist}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{saleprice) }\CommentTok{\#before}
+
+\NormalTok{train}\SpecialCharTok{$}\NormalTok{lnSalePrice }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{saleprice)}
+
+\FunctionTok{hist}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{lnSalePrice) }\CommentTok{\#after}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tractor_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+That is much better. We now have something closer to a normal
+distribution.
+
+\subsubsection{Plotting the relationships After
+Transformation}\label{plotting-the-relationships-after-transformation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{scatterplotMatrix}\NormalTok{(train[,}\FunctionTok{c}\NormalTok{(}\DecValTok{13}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)]) }\CommentTok{\# grabbing lnSalesPrice}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tractor_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+We can still see some nonlinearity between horsepower and sales price.
+It is hard to determine if it is logarithmic or quadratic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train}\SpecialCharTok{$}\NormalTok{lnHorsepower }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{train}\SpecialCharTok{$}\NormalTok{horsepowerSquared }\OtherTok{\textless{}{-}}\NormalTok{ train}\SpecialCharTok{$}\NormalTok{horsepower}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+We could look at engine hours as well and continue forward, for the sake
+of this document, I am going to skip that part.
+
+\subsection{Models}\label{models}
+
+Let's build some models and look at the regression coefficients.
+
+\subsubsection{Model 1: Horsepower with a logaritmic
+shape}\label{model-1-horsepower-with-a-logaritmic-shape}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(lnSalePrice }\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data =}\NormalTok{ train[,}\FunctionTok{c}\NormalTok{(}\DecValTok{13}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{3}\SpecialCharTok{:}\DecValTok{12}\NormalTok{)] ) }\CommentTok{\#pulling only columns I want}
+
+\FunctionTok{summary}\NormalTok{(model\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lnSalePrice ~ ., data = train[, c(13, 14, 3:12)])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.75705 -0.22648  0.02128  0.25572  0.76159 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   6.385e+00  2.034e-01  31.396  < 2e-16 ***
+## lnHorsepower  7.654e-01  5.085e-02  15.053  < 2e-16 ***
+## age          -2.928e-02  3.583e-03  -8.173 1.44e-14 ***
+## enghours     -4.461e-05  9.625e-06  -4.635 5.72e-06 ***
+## diesel        1.099e-01  9.765e-02   1.126  0.26123    
+## fwd           3.399e-01  5.885e-02   5.777 2.22e-08 ***
+## manual       -2.068e-01  6.277e-02  -3.294  0.00113 ** 
+## johndeere     3.438e-01  7.267e-02   4.731 3.71e-06 ***
+## cab           4.094e-01  7.050e-02   5.808 1.89e-08 ***
+## spring       -4.581e-02  6.475e-02  -0.707  0.47997    
+## summer       -7.509e-02  6.345e-02  -1.184  0.23771    
+## winter        4.276e-02  7.137e-02   0.599  0.54965    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.3906 on 254 degrees of freedom
+## Multiple R-squared:  0.8136, Adjusted R-squared:  0.8055 
+## F-statistic: 100.8 on 11 and 254 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or}
+
+\FunctionTok{tbl\_regression}\NormalTok{(model\_1,}
+               \AttributeTok{estimate\_fun =}  \SpecialCharTok{\textasciitilde{}}\FunctionTok{style\_sigfig}\NormalTok{(.x, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  gt}\SpecialCharTok{::}\FunctionTok{tab\_source\_note}\NormalTok{(gt}\SpecialCharTok{::}\FunctionTok{md}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Adjusted R{-}Squared: "}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(model\_1)}\SpecialCharTok{$}\NormalTok{adj.r.squared}\SpecialCharTok{*} \DecValTok{100}\NormalTok{,}\AttributeTok{digits =} \DecValTok{2}\NormalTok{),}\StringTok{"\%"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lccc}
+\toprule
+\textbf{Characteristic} & \textbf{Beta} & \textbf{95\% CI}\textsuperscript{\textit{1}} & \textbf{p-value} \\ 
+\midrule\addlinespace[2.5pt]
+lnHorsepower & 0.7654 & 0.6653, 0.8655 & <0.001 \\ 
+age & -0.0293 & -0.0363, -0.0222 & <0.001 \\ 
+enghours & 0.0000 & -0.0001, 0.0000 & <0.001 \\ 
+diesel & 0.1099 & -0.0824, 0.3022 & 0.3 \\ 
+fwd & 0.3399 & 0.2240, 0.4558 & <0.001 \\ 
+manual & -0.2068 & -0.3304, -0.0832 & 0.001 \\ 
+johndeere & 0.3438 & 0.2007, 0.4869 & <0.001 \\ 
+cab & 0.4094 & 0.2706, 0.5483 & <0.001 \\ 
+spring & -0.0458 & -0.1733, 0.0817 & 0.5 \\ 
+summer & -0.0751 & -0.2000, 0.0499 & 0.2 \\ 
+winter & 0.0428 & -0.0978, 0.1833 & 0.5 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}CI = Confidence Interval\\
+Adjusted R-Squared: 80.55\%\\
+\end{minipage}
+\endgroup
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(model\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tractor_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+These are improvements to these assumptions.
+
+\subsection{Model 2: Quadratic
+Relationship}\label{model-2-quadratic-relationship}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(lnSalePrice }\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data =}\NormalTok{ train[,}\FunctionTok{c}\NormalTok{(}\DecValTok{13}\NormalTok{,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{,}\DecValTok{15}\NormalTok{)] ) }\CommentTok{\#pulling only columns I want}
+
+\FunctionTok{summary}\NormalTok{(model\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lnSalePrice ~ ., data = train[, c(13, 2:12, 15)])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.69027 -0.23045  0.05296  0.29453  0.74126 
+## 
+## Coefficients:
+##                     Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)        8.737e+00  1.139e-01  76.738  < 2e-16 ***
+## horsepower         1.111e-02  1.097e-03  10.125  < 2e-16 ***
+## age               -3.248e-02  3.704e-03  -8.769 2.70e-16 ***
+## enghours          -4.103e-05  9.836e-06  -4.171 4.17e-05 ***
+## diesel             2.203e-01  1.001e-01   2.200   0.0287 *  
+## fwd                2.611e-01  6.074e-02   4.298 2.46e-05 ***
+## manual            -1.474e-01  6.412e-02  -2.299   0.0223 *  
+## johndeere          3.377e-01  7.459e-02   4.528 9.18e-06 ***
+## cab                4.848e-01  7.212e-02   6.723 1.18e-10 ***
+## spring            -7.248e-02  6.655e-02  -1.089   0.2771    
+## summer            -6.108e-02  6.511e-02  -0.938   0.3491    
+## winter             2.329e-02  7.345e-02   0.317   0.7514    
+## horsepowerSquared -1.393e-05  2.302e-06  -6.051 5.15e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.4006 on 253 degrees of freedom
+## Multiple R-squared:  0.8047, Adjusted R-squared:  0.7954 
+## F-statistic: 86.85 on 12 and 253 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or}
+
+\FunctionTok{tbl\_regression}\NormalTok{(model\_2,}
+               \AttributeTok{estimate\_fun =}  \SpecialCharTok{\textasciitilde{}}\FunctionTok{style\_sigfig}\NormalTok{(.x, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as\_gt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  gt}\SpecialCharTok{::}\FunctionTok{tab\_source\_note}\NormalTok{(gt}\SpecialCharTok{::}\FunctionTok{md}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Adjusted R{-}Squared: "}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{summary}\NormalTok{(model\_2)}\SpecialCharTok{$}\NormalTok{adj.r.squared}\SpecialCharTok{*} \DecValTok{100}\NormalTok{,}\AttributeTok{digits =} \DecValTok{2}\NormalTok{),}\StringTok{"\%"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begingroup
+\fontsize{12.0pt}{14.4pt}\selectfont
+\setlength{\LTpost}{0mm}
+\begin{longtable}{lccc}
+\toprule
+\textbf{Characteristic} & \textbf{Beta} & \textbf{95\% CI}\textsuperscript{\textit{1}} & \textbf{p-value} \\ 
+\midrule\addlinespace[2.5pt]
+horsepower & 0.0111 & 0.0089, 0.0133 & <0.001 \\ 
+age & -0.0325 & -0.0398, -0.0252 & <0.001 \\ 
+enghours & 0.0000 & -0.0001, 0.0000 & <0.001 \\ 
+diesel & 0.2203 & 0.0231, 0.4175 & 0.029 \\ 
+fwd & 0.2611 & 0.1415, 0.3807 & <0.001 \\ 
+manual & -0.1474 & -0.2737, -0.0211 & 0.022 \\ 
+johndeere & 0.3377 & 0.1908, 0.4846 & <0.001 \\ 
+cab & 0.4848 & 0.3428, 0.6268 & <0.001 \\ 
+spring & -0.0725 & -0.2035, 0.0586 & 0.3 \\ 
+summer & -0.0611 & -0.1893, 0.0672 & 0.3 \\ 
+winter & 0.0233 & -0.1214, 0.1679 & 0.8 \\ 
+horsepowerSquared & 0.0000 & 0.0000, 0.0000 & <0.001 \\ 
+\bottomrule
+\end{longtable}
+\begin{minipage}{\linewidth}
+\textsuperscript{\textit{1}}CI = Confidence Interval\\
+Adjusted R-Squared: 79.54\%\\
+\end{minipage}
+\endgroup
+
+Since the coefficient of horsepower is so small, it is hard to tell that
+it is showing a quadratic relationship.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(model\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tractor_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+Comparing to the base model, these are improvements to these
+assumptions.
+
+\subsection{Performance}\label{performance}
+
+First things first, we need to include the transformations to our
+dataset so that we can use them in our predictions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{lnSalePrice }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{saleprice)}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{lnHorsepower }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{horsepower)}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{horsepowerSquared }\OtherTok{\textless{}{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{horsepower}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{bad\_model\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(bad\_model, }\AttributeTok{newdata =}\NormalTok{ test)}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{model\_1\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model\_1,}\AttributeTok{newdata =}\NormalTok{ test) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{exp}\NormalTok{()}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{model\_2\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model\_2,}\AttributeTok{newdata =}\NormalTok{ test) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{exp}\NormalTok{()}
+
+\CommentTok{\# Finding the error}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{error\_bm }\OtherTok{\textless{}{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{bad\_model\_pred }\SpecialCharTok{{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{saleprice}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{error\_1 }\OtherTok{\textless{}{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{model\_1\_pred }\SpecialCharTok{{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{saleprice}
+
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{error\_2 }\OtherTok{\textless{}{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{model\_2\_pred }\SpecialCharTok{{-}}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{saleprice}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Bias}\label{bias}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Bad Model}
+\FunctionTok{mean}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_bm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3222.167
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 1}
+\FunctionTok{mean}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -2784.369
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 2}
+\FunctionTok{mean}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -487.4141
+\end{verbatim}
+
+\subsubsection{MAE}\label{mae}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# I decided to create a function to calculate this}
+
+\NormalTok{mae }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(error\_vector)\{}
+\NormalTok{  error\_vector }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{abs}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mean}\NormalTok{()}
+\NormalTok{\}}
+
+\CommentTok{\# Bad Model}
+\FunctionTok{mae}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_bm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10135.71
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 1}
+\FunctionTok{mae}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7863.525
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 2}
+\FunctionTok{mae}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7943.492
+\end{verbatim}
+
+\subsubsection{RMSE}\label{rmse}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rmse }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(error\_vector)\{}
+\NormalTok{   error\_vector}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mean}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{sqrt}\NormalTok{()}
+
+\NormalTok{\}}
+
+\CommentTok{\# Bad Model}
+\FunctionTok{rmse}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_bm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16057.09
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 1}
+\FunctionTok{rmse}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13281.24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 2}
+\FunctionTok{rmse}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11689.06
+\end{verbatim}
+
+\subsubsection{MAPE}\label{mape}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mape }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(error\_vector, actual\_vector)\{}
+\NormalTok{  (error\_vector}\SpecialCharTok{/}\NormalTok{actual\_vector) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{abs}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mean}\NormalTok{()}
+\NormalTok{\}}
+
+\CommentTok{\# Bad Model}
+\FunctionTok{mape}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_bm, test}\SpecialCharTok{$}\NormalTok{saleprice)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4774086
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 1}
+\FunctionTok{mape}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_1, test}\SpecialCharTok{$}\NormalTok{saleprice)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2723213
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Model 2}
+\FunctionTok{mape}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{error\_2, test}\SpecialCharTok{$}\NormalTok{saleprice)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3399796
+\end{verbatim}
+
+\subsubsection{Summary of Performance
+Metrics}\label{summary-of-performance-metrics}
+
+Looking at these three models, the initial model was the worst
+performing (not surprising). Looking at the other two, the logarithmic
+relationship has lower bias, MAE, and MAPE. Model 2 has a lower RMSE
+meaning that there were not large prediction errors. Picking which model
+would depend on your time preference. If you are looking at the
+short-run, then Model 2. Model 1 if you are looking at the long-run.
+
+\end{document}

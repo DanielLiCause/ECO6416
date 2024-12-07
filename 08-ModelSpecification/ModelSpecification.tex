@@ -1,0 +1,702 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Model Specification},
+  pdfauthor={ECO 6416},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Model Specification}
+\author{ECO 6416}
+\date{2024-12-06}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+Here are all the packages needed to get started.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl) }\CommentTok{\# reading in excel file}
+\FunctionTok{library}\NormalTok{(car) }\CommentTok{\# for vif function}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plotly) }\CommentTok{\# for interactive visualizations}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'plotly'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     last_plot
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:graphics':
+## 
+##     layout
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sessionInfo}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## R version 4.4.1 (2024-06-14)
+## Platform: aarch64-apple-darwin20
+## Running under: macOS Sonoma 14.6.1
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## time zone: America/New_York
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] plotly_4.10.4 ggplot2_3.5.1 car_3.1-2     carData_3.0-5 readxl_1.4.3 
+## 
+## loaded via a namespace (and not attached):
+##  [1] gtable_0.3.5      jsonlite_1.8.8    dplyr_1.1.4       compiler_4.4.1   
+##  [5] tidyselect_1.2.1  tidyr_1.3.1       scales_1.3.0      yaml_2.3.10      
+##  [9] fastmap_1.2.0     R6_2.5.1          generics_0.1.3    knitr_1.48       
+## [13] htmlwidgets_1.6.4 tibble_3.2.1      munsell_0.5.1     pillar_1.9.0     
+## [17] rlang_1.1.4       utf8_1.2.4        xfun_0.47         lazyeval_0.2.2   
+## [21] viridisLite_0.4.2 cli_3.6.3         withr_3.0.1       magrittr_2.0.3   
+## [25] digest_0.6.37     grid_4.4.1        rstudioapi_0.16.0 lifecycle_1.0.4  
+## [29] vctrs_0.6.5       evaluate_0.24.0   glue_1.7.0        data.table_1.16.0
+## [33] cellranger_1.1.0  abind_1.4-5       fansi_1.0.6       colorspace_2.1-1 
+## [37] rmarkdown_2.28    purrr_1.0.2       httr_1.4.7        tools_4.4.1      
+## [41] pkgconfig_2.0.3   htmltools_0.5.8.1
+\end{verbatim}
+
+\section{Datasets}\label{datasets}
+
+To demonstrate much of this, let's use some of the datasets we've
+already been using:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mail }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"../Data/First Class Mail.xlsx"}\NormalTok{)}
+\NormalTok{covid }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"../Data/Covid.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's check some model assumptions.
+
+\section{Multicollinearity}\label{multicollinearity}
+
+We can check how variables are related pairwise:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(mail)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Yr FirstClVol    PopUSA     Price      Time
+## Yr         1.0000000  0.6297689 0.9981437 0.9947384 1.0000000
+## FirstClVol 0.6297689  1.0000000 0.6112215 0.6080891 0.6297689
+## PopUSA     0.9981437  0.6112215 1.0000000 0.9935780 0.9981437
+## Price      0.9947384  0.6080891 0.9935780 1.0000000 0.9947384
+## Time       1.0000000  0.6297689 0.9981437 0.9947384 1.0000000
+\end{verbatim}
+
+We may have some strongly correlated variables in this situation. Year,
+Price, and Population are all directly related. Additionally, we have
+perfect correlation on year and Time.
+
+If we were to ignore these signs and continue forward:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mail\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(FirstClVol }\SpecialCharTok{\textasciitilde{}}\NormalTok{. , }\AttributeTok{data =}\NormalTok{ mail)}
+
+\FunctionTok{summary}\NormalTok{(mail\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = FirstClVol ~ ., data = mail)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -37.721  -9.379  -2.381  13.465  29.161 
+## 
+## Coefficients: (1 not defined because of singularities)
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -1.596e+04  4.239e+03  -3.765 0.000401 ***
+## Yr           8.367e+00  2.222e+00   3.765 0.000401 ***
+## PopUSA      -2.210e+00  7.812e-01  -2.829 0.006472 ** 
+## Price       -2.136e+00  1.357e+00  -1.575 0.120894    
+## Time                NA         NA      NA       NA    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.34 on 56 degrees of freedom
+## Multiple R-squared:  0.5002, Adjusted R-squared:  0.4734 
+## F-statistic: 18.68 on 3 and 56 DF,  p-value: 1.605e-08
+\end{verbatim}
+
+The model catches the perfectly correlated variables. Let's drop them
+and check the group-wise comparisons.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mail\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(FirstClVol }\SpecialCharTok{\textasciitilde{}}\NormalTok{. , }\AttributeTok{data =}\NormalTok{ mail[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{])}
+
+\FunctionTok{vif}\NormalTok{(mail\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    PopUSA     Price      Time 
+## 272.90951  96.44439 332.90106
+\end{verbatim}
+
+Those numbers are really high, so our model may be impacted by
+multicollinearity. Let's see:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(mail\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = FirstClVol ~ ., data = mail[, -1])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -37.721  -9.379  -2.381  13.465  29.161 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 430.2370   137.2978   3.134 0.002747 ** 
+## PopUSA       -2.2099     0.7812  -2.829 0.006472 ** 
+## Price        -2.1365     1.3565  -1.575 0.120894    
+## Time          8.3667     2.2221   3.765 0.000401 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.34 on 56 degrees of freedom
+## Multiple R-squared:  0.5002, Adjusted R-squared:  0.4734 
+## F-statistic: 18.68 on 3 and 56 DF,  p-value: 1.605e-08
+\end{verbatim}
+
+Since year and population test significant, we see that it isn't
+impacting those variables, but it is most likely impacting the price
+coefficient.
+
+\section{Functional Form}\label{functional-form}
+
+Assuming something is linear, when in fact, it isn't can cause issues as
+well.
+
+\subsection{Mail Volume}\label{mail-volume}
+
+We can see that there was a peak in mail volume
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(mail}\SpecialCharTok{$}\NormalTok{Time,mail}\SpecialCharTok{$}\NormalTok{FirstClVol, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+so a line is not best fit. Let's generate a different model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mail}\SpecialCharTok{$}\NormalTok{TimeSq }\OtherTok{\textless{}{-}}\NormalTok{ mail}\SpecialCharTok{$}\NormalTok{Time}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\NormalTok{mail\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(FirstClVol }\SpecialCharTok{\textasciitilde{}}\NormalTok{. , }\AttributeTok{data =}\NormalTok{ mail[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{])}
+\FunctionTok{summary}\NormalTok{(mail\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = FirstClVol ~ ., data = mail[, -1])
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -16.242  -5.352   0.683   6.045  15.160 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -5.957e+02  9.968e+01  -5.976 1.76e-07 ***
+## PopUSA       3.373e+00  5.534e-01   6.095 1.13e-07 ***
+## Price        3.102e+00  7.548e-01   4.109 0.000133 ***
+## Time        -5.406e+00  1.465e+00  -3.691 0.000515 ***
+## TimeSq      -8.482e-02  6.183e-03 -13.717  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 7.841 on 55 degrees of freedom
+## Multiple R-squared:  0.8869, Adjusted R-squared:  0.8787 
+## F-statistic: 107.9 on 4 and 55 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+We now have everything testing significant and our overall fit his
+increased, but we still have issues with the price coefficient. It test
+significant, but in the wrong direction. We still have issues here that
+need further investigation.
+
+\subsection{Covid Cases}\label{covid-cases}
+
+We know that covid cases were also non-linear.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(covid}\SpecialCharTok{$}\NormalTok{Day,covid}\SpecialCharTok{$}\NormalTok{cases,}\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+so we can transform the dependent variable and get something linear:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid}\SpecialCharTok{$}\NormalTok{lnCases }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(covid}\SpecialCharTok{$}\NormalTok{cases)}
+\NormalTok{covid\_model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(lnCases}\SpecialCharTok{\textasciitilde{}}\NormalTok{Day, }\AttributeTok{data =}\NormalTok{ covid)}
+
+\FunctionTok{plot}\NormalTok{(covid}\SpecialCharTok{$}\NormalTok{Day,covid}\SpecialCharTok{$}\NormalTok{lnCases , }\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{abline}\NormalTok{(covid\_model, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(covid\_model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lnCases ~ Day, data = covid)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.45434 -0.06623  0.00238  0.07979  0.26237 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 4.142903   0.059430   69.71   <2e-16 ***
+## Day         0.272842   0.003242   84.15   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1615 on 29 degrees of freedom
+## Multiple R-squared:  0.9959, Adjusted R-squared:  0.9958 
+## F-statistic:  7082 on 1 and 29 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid}\SpecialCharTok{$}\NormalTok{Prediction }\OtherTok{\textless{}{-}} \FunctionTok{exp}\NormalTok{(}\FunctionTok{predict}\NormalTok{(covid\_model, }\AttributeTok{newdata =} \FunctionTok{data.frame}\NormalTok{(}\StringTok{"Day"} \OtherTok{=}\NormalTok{ covid}\SpecialCharTok{$}\NormalTok{Day)))}
+
+\FunctionTok{plot}\NormalTok{(covid}\SpecialCharTok{$}\NormalTok{Day,covid}\SpecialCharTok{$}\NormalTok{cases,}\AttributeTok{type =} \StringTok{"l"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(covid}\SpecialCharTok{$}\NormalTok{Day,covid}\SpecialCharTok{$}\NormalTok{Prediction, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+In March 2020, the number of COVID cases were increasing by 27.28\% each
+day give or take 0.64\%.
+
+\section{Orange Juice Demand}\label{orange-juice-demand}
+
+The following data is from a Chicago-area chain called Dominick's. This
+data was collected in the 1990s and the data include weekly prices and
+sales (in number of cartons ``moved'') for 3 orange juice bxfrrands ---
+Tropicana, Minute Maid, Dominick's --- at 83 Chicagoland Stores, as well
+as an indicator, \texttt{feat}, showing whether each brand was
+advertised (in store or flyer) that week.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{oj }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"../Data/oj.csv"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Visualization}\label{visualization}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brandcol }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"gold"}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(oj}\SpecialCharTok{$}\NormalTok{sales,oj}\SpecialCharTok{$}\NormalTok{price, }\AttributeTok{col=}\NormalTok{brandcol[oj}\SpecialCharTok{$}\NormalTok{brand])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\subsection{Functional Forms}\label{functional-forms}
+
+You can see that the relationships between price and quantity demanded
+are nonlinear. We need to transform them first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{oj}\SpecialCharTok{$}\NormalTok{logPrice }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(oj}\SpecialCharTok{$}\NormalTok{price)}
+\NormalTok{oj}\SpecialCharTok{$}\NormalTok{logmove }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(oj}\SpecialCharTok{$}\NormalTok{sales)}
+
+\FunctionTok{plot}\NormalTok{(oj}\SpecialCharTok{$}\NormalTok{logmove,oj}\SpecialCharTok{$}\NormalTok{logPrice, }\AttributeTok{col=}\NormalTok{brandcol[oj}\SpecialCharTok{$}\NormalTok{brand])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\subsection{Omitted Variable Bias}\label{omitted-variable-bias}
+
+Suppose we ran this model instead:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(sales) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(price), }\AttributeTok{data=}\NormalTok{oj)}
+
+\FunctionTok{summary}\NormalTok{(reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(sales) ~ log(price), data = oj)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.0441 -0.5853 -0.0330  0.5756  3.7264 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.42342    0.01535  679.04   <2e-16 ***
+## log(price)  -1.60131    0.01836  -87.22   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9071 on 28945 degrees of freedom
+## Multiple R-squared:  0.2081, Adjusted R-squared:  0.2081 
+## F-statistic:  7608 on 1 and 28945 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+This states that a 1\% increase in price constitutes a 1.6\% decrease in
+quantity demanded. This is elastic.
+
+Ignoring the fact that different brands have different demands will
+cause issues.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(sales) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(price) }\SpecialCharTok{+}\NormalTok{ brand, }\AttributeTok{data=}\NormalTok{oj)}
+
+\FunctionTok{summary}\NormalTok{(reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(sales) ~ log(price) + brand, data = oj)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.3152 -0.5246 -0.0502  0.4929  3.5088 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)      10.82882    0.01453  745.04   <2e-16 ***
+## log(price)       -3.13869    0.02293 -136.89   <2e-16 ***
+## brandminute.maid  0.87017    0.01293   67.32   <2e-16 ***
+## brandtropicana    1.52994    0.01631   93.81   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7935 on 28943 degrees of freedom
+## Multiple R-squared:  0.3941, Adjusted R-squared:  0.394 
+## F-statistic:  6275 on 3 and 28943 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+This states that a 1\% increase in price constitutes a 3.3\% decrease in
+quantity demanded. These are wildly different results.
+
+There is a flaw in both these models though. It assumes that price
+elasticity is the same regardless of brand. Let's fix that.
+
+\subsection{Interaction Terms}\label{interaction-terms}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg\_interact }\OtherTok{\textless{}{-}}  \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(sales) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(price)}\SpecialCharTok{*}\NormalTok{brand, }\AttributeTok{data=}\NormalTok{oj)}
+
+\FunctionTok{summary}\NormalTok{(reg\_interact)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(sales) ~ log(price) * brand, data = oj)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.4434 -0.5232 -0.0494  0.4884  3.4901 
+## 
+## Coefficients:
+##                             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                 10.95468    0.02070 529.136   <2e-16 ***
+## log(price)                  -3.37753    0.03619 -93.322   <2e-16 ***
+## brandminute.maid             0.88825    0.04155  21.376   <2e-16 ***
+## brandtropicana               0.96239    0.04645  20.719   <2e-16 ***
+## log(price):brandminute.maid  0.05679    0.05729   0.991    0.322    
+## log(price):brandtropicana    0.66576    0.05352  12.439   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7911 on 28941 degrees of freedom
+## Multiple R-squared:  0.3978, Adjusted R-squared:  0.3977 
+## F-statistic:  3823 on 5 and 28941 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+We can essentially see 3 different demand equations, one for each brand.
+What if we assume that demand for the good changes if it is advertised?
+
+\subsubsection{More Interactions}\label{more-interactions}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{full\_reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(sales) }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(price)}\SpecialCharTok{*}\NormalTok{brand}\SpecialCharTok{*}\NormalTok{feat, }\AttributeTok{data=}\NormalTok{oj)}
+
+\FunctionTok{summary}\NormalTok{(full\_reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(sales) ~ log(price) * brand * feat, data = oj)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.8893 -0.4290 -0.0091  0.4125  3.2368 
+## 
+## Coefficients:
+##                                  Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                      10.40658    0.02335 445.668  < 2e-16 ***
+## log(price)                       -2.77415    0.03883 -71.445  < 2e-16 ***
+## brandminute.maid                  0.04720    0.04663   1.012    0.311    
+## brandtropicana                    0.70794    0.05080  13.937  < 2e-16 ***
+## feat                              1.09441    0.03810  28.721  < 2e-16 ***
+## log(price):brandminute.maid       0.78293    0.06140  12.750  < 2e-16 ***
+## log(price):brandtropicana         0.73579    0.05684  12.946  < 2e-16 ***
+## log(price):feat                  -0.47055    0.07409  -6.351 2.17e-10 ***
+## brandminute.maid:feat             1.17294    0.08196  14.312  < 2e-16 ***
+## brandtropicana:feat               0.78525    0.09875   7.952 1.90e-15 ***
+## log(price):brandminute.maid:feat -1.10922    0.12225  -9.074  < 2e-16 ***
+## log(price):brandtropicana:feat   -0.98614    0.12411  -7.946 2.00e-15 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.695 on 28935 degrees of freedom
+## Multiple R-squared:  0.5354, Adjusted R-squared:  0.5352 
+## F-statistic:  3031 on 11 and 28935 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Now we essentially have 6 demand equations; two for each brand based on
+whether or not it was advertised. We can also view this as a table:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{coef}\NormalTok{(full\_reg)}
+
+\NormalTok{Ad }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Not Featured"}\NormalTok{,}\StringTok{"Featured"}\NormalTok{)}
+\NormalTok{Dominicks }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(b[}\StringTok{"log(price)"}\NormalTok{],}
+\NormalTok{               b[}\StringTok{"log(price)"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):feat"}\NormalTok{])}
+\NormalTok{MinuteMaid }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(b[}\StringTok{"log(price)"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):brandminute.maid"}\NormalTok{],}
+\NormalTok{                b[}\StringTok{"log(price)"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):brandminute.maid"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):feat"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):brandminute.maid:feat"}\NormalTok{]}
+\NormalTok{                )}
+\NormalTok{Tropicana }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(b[}\StringTok{"log(price)"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):brandtropicana"}\NormalTok{],}
+\NormalTok{               b[}\StringTok{"log(price)"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):brandtropicana"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):feat"}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ b[}\StringTok{"log(price):brandtropicana:feat"}\NormalTok{])}
+
+
+\FunctionTok{data.frame}\NormalTok{(}\StringTok{"Advertising"} \OtherTok{=}\NormalTok{ Ad,}
+           \StringTok{"Dominicks"} \OtherTok{=} \FunctionTok{round}\NormalTok{(Dominicks,}\AttributeTok{digits =} \DecValTok{1}\NormalTok{),}
+           \StringTok{"MinuteMaid"} \OtherTok{=} \FunctionTok{round}\NormalTok{(MinuteMaid,}\AttributeTok{digits =} \DecValTok{1}\NormalTok{),}
+           \StringTok{"Tropicana"} \OtherTok{=} \FunctionTok{round}\NormalTok{(Tropicana,}\AttributeTok{digits =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Advertising Dominicks MinuteMaid Tropicana
+## 1 Not Featured      -2.8       -2.0      -2.0
+## 2     Featured      -3.2       -3.6      -3.5
+\end{verbatim}
+
+\subsection{Table explaining why ads confounded our brand elasticity
+estimates}\label{table-explaining-why-ads-confounded-our-brand-elasticity-estimates}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salestable }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(}\FunctionTok{exp}\NormalTok{(oj}\SpecialCharTok{$}\NormalTok{logmove), oj[,}\FunctionTok{c}\NormalTok{(}\StringTok{"feat"}\NormalTok{,}\StringTok{"brand"}\NormalTok{)], sum)}
+\FunctionTok{mosaicplot}\NormalTok{(salestable,}\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"gold"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{ModelSpecification_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+Minute maid was featured more often than Tropicana. Since being featured
+leads to more price sensitivity, it lead to Minute maid appearing more
+price sensitive.
+
+\end{document}
